@@ -7,17 +7,17 @@ public class Monster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject prize = GameObject.Find ("Prize");
+		GameObject prize = GameObject.FindGameObjectWithTag ("Prize");
 
 		if (prize) {
 			GetComponent<NavMeshAgent> ().destination = prize.transform.position;
 		}
 	}
 
-	void OnTriggerEnter(Collider c) {
-		if (c.tag == "Prize") {
-			c.GetComponentInChildren<Health> ().Decrease ();
-			Instantiate (explosion, c.transform.position, c.transform.rotation);
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Prize") {
+			other.GetComponentInChildren<Health> ().Decrease ();
+			Instantiate (explosion, other.transform.position, other.transform.rotation);
 			Destroy (gameObject);
 		}
 	}

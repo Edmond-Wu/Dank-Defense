@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: 49e17e200fe9f97439e6d961718a3e5e
-timeCreated: 1438675581
+timeCreated: 1438746860
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - monster: {fileID: 199264, guid: 4bf76c77481eb184db3617fa8c937e44, type: 2}
+  - score_display: {instanceID: 0}
+  - restart_display: {instanceID: 0}
+  - gameover_display: {instanceID: 0}
+  - menu: {instanceID: 0}
+  - instructions: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
