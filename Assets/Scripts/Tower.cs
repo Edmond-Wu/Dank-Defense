@@ -9,10 +9,11 @@ public class Tower : MonoBehaviour {
 	private float next_fire;
 	private bool in_range = false;
 	private GameObject monster;
-	private int upgrade_cost = 20;
-	private Spawn spawn;
+	//private int upgrade_cost = 25;
+	//public GameObject upgrade;
+	//private Spawn spawn;
 
-	void Start () {
+	/*void Start () {
 		GameObject spawn_obj = GameObject.FindWithTag ("Spawn");
 		if (spawn_obj != null) {
 			spawn = spawn_obj.GetComponent<Spawn> ();
@@ -20,7 +21,7 @@ public class Tower : MonoBehaviour {
 		else {
 			Debug.Log ("Cannot find 'Spawn' script");
 		}
-	}
+	}*/
 
 	// Update is called once per frame
 	void Update () {
@@ -44,4 +45,16 @@ public class Tower : MonoBehaviour {
 			in_range = false;
 		}
 	}
+
+	/*void OnMouseUpAsButton() {
+		if (spawn.GetKash () < upgrade_cost) {
+			GetComponent<AudioSource> ().Play ();
+		}
+		else {
+			GameObject tower_upgrade = (GameObject)Instantiate (upgrade, transform.position + Vector3.up, Quaternion.identity);
+			//tower_upgrade.transform.position = transform.position + Vector3.up;
+			Destroy (gameObject);
+			spawn.MakeKash (-upgrade_cost);
+		}
+	}*/
 }

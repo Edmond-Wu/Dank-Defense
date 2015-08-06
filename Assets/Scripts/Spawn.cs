@@ -4,10 +4,12 @@ using System.Collections;
 public class Spawn : MonoBehaviour {
 
 	public GameObject monster;
+	public GameObject monster_upgrade;
 	public float time_between_spawns = 3;
 	public int num_monsters = 10;
 	public float begin_wait;
 	public float between_waves = 5;
+	private int wave_count = 0;
 	private int score = 0;
 	private int cash = 100;
 	
@@ -33,7 +35,15 @@ public class Spawn : MonoBehaviour {
 	}
 
 	void SpawnNext() {
-		Instantiate(monster, transform.position, Quaternion.identity);
+		if (wave_count < 3) {
+			Instantiate (monster, transform.position, Quaternion.identity);
+		} else if (wave_count < 5) {
+			Instantiate (monster, transform.position, Quaternion.identity);
+			Instantiate (monster_upgrade, transform.position - Vector3.back, Quaternion.identity);
+		} else {
+			time_between_spawns = 1;
+			Instantiate (monster_upgrade, transform.position, Quaternion.identity);
+		}
 	}
 
 	void Update() {
@@ -58,6 +68,7 @@ public class Spawn : MonoBehaviour {
 				SpawnNext ();
 				yield return new WaitForSeconds(time_between_spawns);
 			}
+			wave_count++;
 			yield return new WaitForSeconds(between_waves);
 			if (game_over) {
 				//restart_display.text = "Press R to Restart";
