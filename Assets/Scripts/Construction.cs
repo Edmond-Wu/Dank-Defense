@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Construction : MonoBehaviour {
-
+	GameObject tower; //= tower_prefab;
 	public GameObject tower_prefab;
 	public GameObject upgrade_prefab;
 	private Spawn spawn;
@@ -26,7 +26,6 @@ public class Construction : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
-		GameObject tower = tower_prefab;
 		if (!has_tower) {
 			if (spawn.GetKash() < cost) {
 				GetComponent<AudioSource> ().Play ();
@@ -43,10 +42,7 @@ public class Construction : MonoBehaviour {
 					GetComponent<AudioSource> ().Play ();
 				}
 				else {
-					//Destroy(tower);
-					//tower.GetComponent<SphereCollider>.radius = 1;
-					SphereCollider myCollider = tower.GetComponent<SphereCollider>();
-					myCollider.radius = 1f; // or whatever radius you want.
+					Destroy(tower);
 					GameObject upgrade = (GameObject)Instantiate (upgrade_prefab);
 					upgrade.transform.position = transform.position + Vector3.up;
 					spawn.MakeKash (-upgrade_cost);
