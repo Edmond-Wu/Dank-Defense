@@ -9,6 +9,7 @@ public class Construction : MonoBehaviour {
 	private int cost = 25;
 	private int upgrade_cost = 20;
 	private bool has_tower = false;
+	private bool upgraded = false;
 
 	void Start () {
 		GameObject spawn_obj = GameObject.FindWithTag ("Spawn");
@@ -25,21 +26,32 @@ public class Construction : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
-		if (spawn.GetKash () < cost) {
-			GetComponent<AudioSource> ().Play ();
-		} else {
-			GameObject tower = Instantiate (tower_prefab);
-			if (!has_tower) {
+		GameObject tower = tower_prefab;
+		if (!has_tower) {
+			if (spawn.GetKash() < cost) {
+				GetComponent<AudioSource> ().Play ();
+			}
+			else {
+				tower = Instantiate (tower_prefab);
 				tower.transform.position = transform.position + Vector3.up;
 				spawn.MakeKash (-cost);
 				has_tower = true;
-			} else if (spawn.GetKash () >= upgrade_cost && has_tower) {
-				GameObject upgrade = (GameObject)Instantiate (upgrade_prefab);
-				upgrade.transform.position = transform.position + Vector3.up;
-				if (tower) {
-					Destroy (tower);
+			}
+		} else {
+			if (!upgraded) {
+				if (spawn.GetKash() < upgrade_cost) {
+					GetComponent<AudioSource> ().Play ();
 				}
-				spawn.MakeKash (-upgrade_cost);
+				else {
+					//Destroy(tower);
+					//tower.GetComponent<SphereCollider>.radius = 1;
+					SphereCollider myCollider = tower.GetComponent<SphereCollider>();
+					myCollider.radius = 1f; // or whatever radius you want.
+					GameObject upgrade = (GameObject)Instantiate (upgrade_prefab);
+					upgrade.transform.position = transform.position + Vector3.up;
+					spawn.MakeKash (-upgrade_cost);
+					upgraded = true;
+				}
 			}
 		}
 	}
