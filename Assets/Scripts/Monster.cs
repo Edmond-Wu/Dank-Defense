@@ -15,8 +15,10 @@ public class Monster : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "Prize") {
-			other.GetComponentInChildren<Health> ().Decrease ();
+		if (other.tag == "Prize" || other.tag == "Mine") {
+			if (other.tag == "Prize") {
+				other.GetComponentInChildren<Health> ().Decrease ();
+			}
 			Instantiate (explosion, other.transform.position, other.transform.rotation);
 			Destroy (gameObject);
 		}

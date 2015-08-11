@@ -6,8 +6,8 @@ public class Construction : MonoBehaviour {
 	public GameObject tower_prefab;
 	public GameObject upgrade_prefab;
 	private Spawn spawn;
-	private int cost = 25;
-	private int upgrade_cost = 20;
+	private int cost = 20;
+	private int upgrade_cost = 25;
 	private bool has_tower = false;
 	private bool upgraded = false;
 
@@ -43,8 +43,8 @@ public class Construction : MonoBehaviour {
 				}
 				else {
 					Destroy(tower);
-					GameObject upgrade = (GameObject)Instantiate (upgrade_prefab);
-					upgrade.transform.position = transform.position + Vector3.up;
+					tower = (GameObject)Instantiate (upgrade_prefab);
+					tower.transform.position = transform.position + Vector3.up;
 					spawn.MakeKash (-upgrade_cost);
 					upgraded = true;
 				}

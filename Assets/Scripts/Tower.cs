@@ -9,19 +9,6 @@ public class Tower : MonoBehaviour {
 	private float next_fire;
 	private bool in_range = false;
 	private GameObject monster;
-	//private int upgrade_cost = 25;
-	//public GameObject upgrade;
-	//private Spawn spawn;
-
-	/*void Start () {
-		GameObject spawn_obj = GameObject.FindWithTag ("Spawn");
-		if (spawn_obj != null) {
-			spawn = spawn_obj.GetComponent<Spawn> ();
-		} 
-		else {
-			Debug.Log ("Cannot find 'Spawn' script");
-		}
-	}*/
 
 	// Update is called once per frame
 	void Update () {
