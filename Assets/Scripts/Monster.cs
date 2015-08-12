@@ -4,11 +4,12 @@ using System.Collections;
 public class Monster : MonoBehaviour {
 
 	public GameObject explosion;
+	public NavMeshAgent nav;
 
 	// Use this for initialization
 	void Start () {
 		GameObject prize = GameObject.FindGameObjectWithTag ("Prize");
-
+		nav = GetComponent<NavMeshAgent> ();
 		if (prize) {
 			GetComponent<NavMeshAgent> ().destination = prize.transform.position;
 		}

@@ -8,40 +8,31 @@ public class Tower : MonoBehaviour {
 	public float fire_rate;
 	private float next_fire;
 	private bool in_range = false;
-	private GameObject monster;
+	private GameObject enemy;
+
 
 	// Update is called once per frame
 	void Update () {
 		transform.Rotate(Vector3.up * Time.deltaTime * rotation_speed, Space.World);
-		if (Time.time > next_fire && in_range && monster) {
+		if (Time.time > next_fire && in_range && enemy) {
 			next_fire = Time.time + fire_rate;
 			GameObject g = (GameObject)Instantiate (bullet, transform.position, Quaternion.identity);
-			g.GetComponent<Bullet> ().target = monster.transform;
+			g.GetComponent<Bullet> ().target = enemy.transform;
 		}
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Monster") {
 			in_range = true;
-			monster = other.gameObject;
+			enemy = other.gameObject;
+			enemy.GetComponent<Monster>().nav.speed = 1.0f;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.tag == "Monster") {
 			in_range = false;
+			other.gameObject.GetComponent<Monster>().nav.speed = 3.0f;
 		}
 	}
-
-	/*void OnMouseUpAsButton() {
-		if (spawn.GetKash () < upgrade_cost) {
-			GetComponent<AudioSource> ().Play ();
-		}
-		else {
-			GameObject tower_upgrade = (GameObject)Instantiate (upgrade, transform.position + Vector3.up, Quaternion.identity);
-			//tower_upgrade.transform.position = transform.position + Vector3.up;
-			Destroy (gameObject);
-			spawn.MakeKash (-upgrade_cost);
-		}
-	}*/
 }

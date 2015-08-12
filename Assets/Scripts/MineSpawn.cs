@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MineSpawn : MonoBehaviour {
 
-	bool has_mine = false;
+	//bool has_mine = false;
 	int cost = 20;
 	Spawn spawn;
 	GameObject mine;
@@ -29,7 +29,7 @@ public class MineSpawn : MonoBehaviour {
 				Vector3 dir = new Vector3(0f, .1f, 0f);
 				mine.transform.position = transform.position + dir;
 				spawn.MakeKash (-cost);
-				has_mine = true;
+				//has_mine = true;
 			}
 		//}
 	}
