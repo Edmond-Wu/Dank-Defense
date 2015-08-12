@@ -25,14 +25,14 @@ public class Tower : MonoBehaviour {
 		if (other.tag == "Monster") {
 			in_range = true;
 			enemy = other.gameObject;
-			enemy.GetComponent<Monster>().nav.speed = 1.0f;
+			//enemy.GetComponent<Monster>().nav.speed = 1.0f;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.tag == "Monster") {
 			in_range = false;
-			other.gameObject.GetComponent<Monster>().nav.speed = 3.0f;
+			//other.gameObject.GetComponent<Monster>().nav.speed = 3.0f;
 		}
 	}
 }

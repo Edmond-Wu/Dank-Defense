@@ -4,6 +4,7 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
 	TextMesh health;
+	public TextMesh monetary_reward;
 	public GameObject explosion;
 	public GameObject g;
 	private Spawn spawn;
@@ -37,6 +38,7 @@ public class Health : MonoBehaviour {
 		} 
 		else {
 			Instantiate (explosion, g.transform.position, g.transform.rotation);
+			Instantiate (monetary_reward, g.transform.position + Vector3.up + Vector3.up, Quaternion.identity);
 			Destroy (transform.parent.gameObject);
 			if (g.tag == "Monster") {
 				spawn.AddPoints (points_value);

@@ -1,14 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tower.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Health.cs">
     <Files>
+      <File FileName="Assets\Scripts\Monster.cs" Line="7" Column="26" />
       <File FileName="Assets\Scripts\Spawn.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Monster.cs" Line="12" Column="20" />
-      <File FileName="Assets\Scripts\Health.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tower.cs" Line="19" Column="63" />
-      <File FileName="Assets\Scripts\Mine.cs" Line="12" Column="45" />
-      <File FileName="Assets\Scripts\Construction.cs" Line="14" Column="2" />
-      <File FileName="Assets\Scripts\MineSpawn.cs" Line="32" Column="7" />
+      <File FileName="Assets\Scripts\Health.cs" Line="41" Column="101" />
+      <File FileName="Assets\Scripts\Tower.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Mine.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Construction.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MineSpawn.cs" Line="31" Column="28" />
+      <File FileName="Assets\Scripts\Bullet.cs" Line="22" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

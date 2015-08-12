@@ -4,7 +4,7 @@ using System.Collections;
 public class MineSpawn : MonoBehaviour {
 
 	//bool has_mine = false;
-	int cost = 20;
+	int cost = 15;
 	Spawn spawn;
 	GameObject mine;
 	public GameObject mine_prefab;

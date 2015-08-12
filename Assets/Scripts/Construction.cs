@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class Construction : MonoBehaviour {
-	GameObject tower; //= tower_prefab;
+	GameObject tower;
 	public GameObject tower_prefab;
 	public GameObject upgrade_prefab;
 	private Spawn spawn;
 	private int cost = 20;
-	private int upgrade_cost = 25;
+	private int upgrade_cost = 40;
 	private bool has_tower = false;
 	private bool upgraded = false;
 
@@ -31,8 +31,7 @@ public class Construction : MonoBehaviour {
 				GetComponent<AudioSource> ().Play ();
 			}
 			else {
-				tower = Instantiate (tower_prefab);
-				tower.transform.position = transform.position + Vector3.up;
+				tower = (GameObject)Instantiate (tower_prefab, transform.position + Vector3.up, Quaternion.identity);
 				spawn.MakeKash (-cost);
 				has_tower = true;
 			}
@@ -43,8 +42,7 @@ public class Construction : MonoBehaviour {
 				}
 				else {
 					Destroy(tower);
-					tower = (GameObject)Instantiate (upgrade_prefab);
-					tower.transform.position = transform.position + Vector3.up;
+					tower = (GameObject)Instantiate (upgrade_prefab, transform.position + Vector3.up, Quaternion.identity);
 					spawn.MakeKash (-upgrade_cost);
 					upgraded = true;
 				}
