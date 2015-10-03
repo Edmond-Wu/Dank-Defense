@@ -34,14 +34,14 @@ public class Health : MonoBehaviour {
 
 	public void Decrease() {
 		if (Current () > 1) {
-			health.text = health.text.Remove (health.text.Length - 1);
+			health.text = health.text.Substring(1);
 		} 
 		else {
 			Instantiate (explosion, g.transform.position, g.transform.rotation);
 			Instantiate (monetary_reward, g.transform.position + Vector3.up + Vector3.up, Quaternion.identity);
 			Destroy (transform.parent.gameObject);
 			if (g.tag == "Monster") {
-				spawn.AddPoints (points_value);
+				//spawn.AddPoints (points_value);
 				spawn.MakeKash (cash_value);
 			}
 			else if (g.tag == "Prize") {
