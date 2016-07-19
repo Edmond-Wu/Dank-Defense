@@ -11,7 +11,7 @@ public class Spawn : MonoBehaviour {
 	public float begin_wait;
 	public float between_waves = 5;
 	private int wave_count = 1;
-	private int score = 420;
+	private int score = 0;
 	private int cash = 100;
 	
 	public GUIText score_display;
