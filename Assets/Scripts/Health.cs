@@ -8,7 +8,7 @@ public class Health : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject g;
 	private Spawn spawn;
-	public int health_value;
+	int health_value;
 	public int points_value;
 	public int cash_value;
 
