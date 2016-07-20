@@ -5,11 +5,14 @@ public class Construction : MonoBehaviour {
 	GameObject tower;
 	public GameObject tower_prefab;
 	public GameObject upgrade_prefab;
+	public GameObject max_prefab;
 	private Spawn spawn;
 	private int cost = 20;
 	private int upgrade_cost = 40;
+	private int max_cost = 80;
 	private bool has_tower = false;
 	private bool upgraded = false;
+	private bool maxed = false;
 
 	void Start () {
 		GameObject spawn_obj = GameObject.FindWithTag ("Spawn");
@@ -31,20 +34,34 @@ public class Construction : MonoBehaviour {
 				GetComponent<AudioSource> ().Play ();
 			}
 			else {
-				tower = (GameObject)Instantiate (tower_prefab, transform.position + Vector3.up, Quaternion.identity);
+				tower = (GameObject)Instantiate (tower_prefab, transform.position + Vector3.up, Quaternion.Euler(45, 0, 45));
 				spawn.MakeKash (-cost);
 				has_tower = true;
 			}
 		} else {
-			if (!upgraded) {
-				if (spawn.GetKash() < upgrade_cost) {
+			Upgrade ();
+		}
+	}
+
+	void Upgrade() {
+		if (!upgraded) {
+			if (spawn.GetKash () < upgrade_cost) {
+				GetComponent<AudioSource> ().Play ();
+			} else {
+				Destroy (tower);
+				tower = (GameObject)Instantiate (upgrade_prefab, transform.position + Vector3.up, Quaternion.Euler(45, 0, 45));
+				spawn.MakeKash (-upgrade_cost);
+				upgraded = true;
+			}
+		} else {
+			if (!maxed) {
+				if (spawn.GetKash () < max_cost) {
 					GetComponent<AudioSource> ().Play ();
-				}
-				else {
-					Destroy(tower);
-					tower = (GameObject)Instantiate (upgrade_prefab, transform.position + Vector3.up, Quaternion.identity);
-					spawn.MakeKash (-upgrade_cost);
-					upgraded = true;
+				} else {
+					Destroy (tower);
+					tower = (GameObject)Instantiate (max_prefab, transform.position + Vector3.up, Quaternion.Euler(45, 0, 45));
+					spawn.MakeKash (-max_cost);
+					maxed = true;
 				}
 			}
 		}

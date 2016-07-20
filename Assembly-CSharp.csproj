@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CF98785E-DE75-88D9-6327-6CCAF212FB39}</ProjectGuid>
+    <ProjectGuid>{A556EFCF-5C78-D9B2-7A9F-8CB2E9AA2E1B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -47,7 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Construction.cs" />
-     <Compile Include="Assets\Scripts\Controller.cs" />
      <Compile Include="Assets\Scripts\ExplosionRemoval.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\Mine.cs" />

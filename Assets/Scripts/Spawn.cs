@@ -12,12 +12,13 @@ public class Spawn : MonoBehaviour {
 	public float between_waves = 5;
 	private int wave_count = 1;
 	private int score = 0;
-	private int cash = 100;
+	private int cash = 200;
 	
 	public GUIText score_display;
 	public GUIText cash_display;
 	//public GUIText restart_display;
 	public GUIText gameover_display;
+	public GUIText start_display;
 	//public GUIText menu;
 	//public GUIText instructions;
 	
@@ -33,6 +34,7 @@ public class Spawn : MonoBehaviour {
 		restart = false;
 		start_game = false;
 		gameover_display.text = "";
+		start_display.text = "Press Enter";
 		//InvokeRepeating("SpawnNext", time_between_spawns, time_between_spawns);
 	}
 
@@ -55,6 +57,7 @@ public class Spawn : MonoBehaviour {
 	void Update() {
 		if ((Input.GetKeyDown("return") || Input.GetKeyDown("enter")) && !restart) {
 			start_game = true;
+			start_display.text = "";
 			if (start_game) {
 				StartCoroutine (SpawnMonsters ());
 				GetComponent<AudioSource>().Play();
