@@ -6,6 +6,7 @@ public class Construction : MonoBehaviour {
 	public GameObject tower_prefab;
 	public GameObject upgrade_prefab;
 	public GameObject max_prefab;
+	public GameObject three_sixty_prefab;
 	private Spawn spawn;
 	private int cost = 20;
 	private int upgrade_cost = 40;
@@ -29,17 +30,27 @@ public class Construction : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
-		if (!has_tower) {
-			if (spawn.GetKash() < cost) {
-				GetComponent<AudioSource> ().Play ();
+		if (spawn.GetKash () >= 360) {
+			if (tower) {
+				Destroy (tower);
 			}
-			else {
-				tower = (GameObject)Instantiate (tower_prefab, transform.position + Vector3.up, Quaternion.Euler(45, 0, 45));
-				spawn.MakeKash (-cost);
-				has_tower = true;
-			}
+			tower = (GameObject)Instantiate (three_sixty_prefab, transform.position + Vector3.up, Quaternion.Euler (45, 0, 45));
+			tower.GetComponent<AudioSource> ().Play ();
+			spawn.MakeKash (-360);
+			has_tower = true;
+			maxed = true;
 		} else {
-			Upgrade ();
+			if (!has_tower) {
+				if (spawn.GetKash () < cost) {
+					GetComponent<AudioSource> ().Play ();
+				} else {
+					tower = (GameObject)Instantiate (tower_prefab, transform.position + Vector3.up, Quaternion.Euler (45, 0, 45));
+					spawn.MakeKash (-cost);
+					has_tower = true;
+				}
+			} else {
+				Upgrade ();
+			}
 		}
 	}
 
